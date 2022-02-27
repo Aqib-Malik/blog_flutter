@@ -1,7 +1,6 @@
 import 'package:blog_flutter/Models/current_user.dart';
 import 'package:blog_flutter/common_widgets/CommonWidgets.dart';
 import 'package:blog_flutter/controllers/authentication_controller.dart';
-import 'package:blog_flutter/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -41,8 +40,11 @@ class _DrawerrState extends State<Drawerr> {
               : GestureDetector(
                   onTap: () async {},
                   child: CircleAvatar(
+                    radius: 25.0,
                     child: ClipOval(
-                      child: Image(image: NetworkImage(currentUser.image.toString()),)
+                      child: Image(image: NetworkImage(currentUser.image.toString(),),height: 100,
+                        width: 100,
+                        fit: BoxFit.cover ,)
                     ),
                   ),
                 ),

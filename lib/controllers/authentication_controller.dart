@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 import 'package:blog_flutter/Models/current_user.dart';
+import 'package:blog_flutter/commonStrings/strings.dart';
 import 'package:blog_flutter/screens/home.dart';
 import 'package:blog_flutter/screens/login/login.dart';
 import 'package:blog_flutter/shared_pref_helper.dart';
@@ -22,7 +23,7 @@ class AuthenticationController extends GetxController {
     var formData = FormData.fromMap(
         {'image': await MultipartFile.fromFile(image!.path), 'user': id});
     var res =
-        await Dio().post("http://10.0.2.2:8000/cat/profile/", data: formData);
+        await Dio().post("${api_url}/cat/profile/", data: formData);
     print(res.statusCode);
     print(res);
   }
@@ -31,14 +32,14 @@ class AuthenticationController extends GetxController {
     try {
       SharedPreferences pref=await SharedPreferences.getInstance();
       var a=pref.get("token");
-      String url = 'http://10.0.2.2:8000/prof/$id/';
+      String url = '${api_url}/prof/$id/';
       http.Response response =
           await http.get(Uri.parse(url), headers: {'Authorization': 'Token $a'});//1e14e9b9b1d88d7cacf25c4f791525f8adbf59a9
       var currentUserData = json.decode(response.body);
       print("********Current User**********");
       currentUser.name=currentUserData[0]['user']['username'];
       currentUser.email=currentUserData[0]['user']['email'];
-      currentUser.image="http://10.0.2.2:8000"+currentUserData[0]['image'];
+      currentUser.image="${api_url}"+currentUserData[0]['image'];
       
       print(currentUserData);
       
@@ -120,7 +121,7 @@ class AuthenticationController extends GetxController {
       String name, String email, String password, File? image) async {
     try {
       var res = await http.post(
-        Uri.parse("http://10.0.2.2:8000/api/register/"
+        Uri.parse("${api_url}/api/register/"
             //"http://10.0.2.2:8000/user_api/"
             ),
         headers: <String, String>{
@@ -140,14 +141,14 @@ class AuthenticationController extends GetxController {
       if (res.statusCode == 200) {
         uploadImge(image, da['user']['id']);
         Get.snackbar("Created", "Account created successfully");
-        final pref = await SharedPreferences.getInstance();
-        pref.setString("token", da["token"]);
-        pref.setInt("userId", da["user"]["id"]);
+        // final pref = await SharedPreferences.getInstance();
+        // pref.setString("token", da["token"]);
+        // pref.setInt("userId", da["user"]["id"]);
         // SharedPreferencesHelper().setcurrentUser(
         //     da["user"]["username"], da["user"]["email"], da["user"]["id"]);
         // final prefs = await SharedPreferences.getInstance();
         // await SharedPreferencesHelper().settoken(da["token"]);
-        Get.off(Home());
+        Get.to(Login());
       } else {
         Get.snackbar("Error", "Some thing Wrong!!");
       }
@@ -162,7 +163,7 @@ class AuthenticationController extends GetxController {
   login_user_api(String name, String password) async {
     try {
       var res = await http.post(
-        Uri.parse("http://10.0.2.2:8000/api/login/"),
+        Uri.parse("${api_url}/api/login/"),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -194,7 +195,7 @@ class AuthenticationController extends GetxController {
   Future<void> logout() async {
     try {
       final token = await SharedPreferencesHelper().gettoken();
-      var res = await http.post(Uri.parse('http://10.0.2.2:8000/api/logout/'),
+      var res = await http.post(Uri.parse('${api_url}/api/logout/'),
           headers: {'Authorization': "Token $token"});
 
       print(res.statusCode);

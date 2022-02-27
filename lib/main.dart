@@ -1,6 +1,3 @@
-import 'package:blog_flutter/imageTesing.dart';
-import 'package:blog_flutter/screens/home.dart';
-import 'package:blog_flutter/screens/signup/signup.dart';
 import 'package:blog_flutter/screens/wellcome.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

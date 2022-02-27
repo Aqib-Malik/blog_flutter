@@ -2,8 +2,6 @@ import 'package:blog_flutter/Models/current_user.dart';
 import 'package:blog_flutter/common_widgets/CommonWidgets.dart';
 import 'package:blog_flutter/controllers/authentication_controller.dart';
 import 'package:blog_flutter/controllers/home_controller.dart';
-import 'package:blog_flutter/screens/CategoryPost.dart';
-import 'package:blog_flutter/screens/comment_screen.dart';
 import 'package:blog_flutter/screens/drawerr.dart';
 import 'package:blog_flutter/screens/post_screen.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +40,9 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       onRefresh: () async {
-        setState(() {});
+        setState(() {
+          controller.getPostData();
+        });
       },
       child: Scaffold(
         drawer: Drawerr(),
@@ -121,7 +121,7 @@ class _HomeState extends State<Home> {
                                 ['title'],
                             title: controller.data[index]['title'],
                             totalLikes:
-                                controller.data[index]['totalLikes'].toString(),
+                                controller.data[index]['totalLikes']==null?"0":controller.data[index]['totalLikes'].toString(),
                             content:
                                 controller.data[index]['content'].toString(),
                             ind: index,

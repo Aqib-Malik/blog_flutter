@@ -1,7 +1,5 @@
-import 'package:blog_flutter/Models/Post.dart';
 import 'package:blog_flutter/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class DetailPost extends StatefulWidget {
@@ -42,13 +40,12 @@ class _DetailPostState extends State<DetailPost> {
                 child: Padding(
                   padding: const EdgeInsets.only(top: 10.0),
                   child: ListTile(
-                    leading: Icon(Icons.person),
+                   
                     title: Text(widget.title.toString()),
                     subtitle: Text(
                       // dateNoww.toString()
                       widget.category.toString(),
                     ),
-                    trailing: Icon(Icons.more_vert),
                   ),
                 ),
               ),
