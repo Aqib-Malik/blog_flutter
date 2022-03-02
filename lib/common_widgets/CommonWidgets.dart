@@ -1,11 +1,11 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:blog_flutter/screens/CategoryPost.dart';
+import 'package:blog_flutter/Post_Module/Views/CategoryPost.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CommonWidgets {
-  static categoryWidget(int id,String str) {
+  static categoryWidget(int? id,String str) {
     return Container(
       
         child: Padding(

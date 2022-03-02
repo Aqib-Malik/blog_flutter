@@ -1,6 +1,5 @@
-import 'package:blog_flutter/Models/Post.dart';
+import 'package:blog_flutter/Post_Module/Views/post_screen.dart';
 import 'package:blog_flutter/controllers/home_controller.dart';
-import 'package:blog_flutter/screens/post_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

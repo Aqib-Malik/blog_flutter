@@ -1,8 +1,9 @@
-import 'package:blog_flutter/screens/home.dart';
 import 'package:blog_flutter/screens/signup/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../Post_Module/Views/App_Posts.dart';
 
 class WellCome extends StatefulWidget {
   const WellCome({ Key? key }) : super(key: key);
@@ -22,7 +23,7 @@ class _WellComeState extends State<WellCome> {
     super.initState();
     checkLogin().whenComplete((){
       print(a);
-     a==null?Get.off(Signup()):Get.off(Home());
+     a==null?Get.off(Signup()):Get.off(ProductListView());
     });
   }
   @override

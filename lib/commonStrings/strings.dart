@@ -1,1 +1,1 @@
-var api_url='https://blogappdej.herokuapp.com';
+var api_url="https://programmingblogs.herokuapp.com";//'https://blogappdejj.herokuapp.com';//'http://10.0.2.2:8000';//'https://blogappdej.herokuapp.com';

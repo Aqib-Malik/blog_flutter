@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "997066323738",
+    "project_id": "face-book-login-c6070",
+    "storage_bucket": "face-book-login-c6070.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:997066323738:android:0f5887f7504d512c189ea3",
+        "android_client_info": {
+          "package_name": "com.example.blog_fire_django"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "997066323738-qpqqk7dp203flthlj5m5tvc4m6u8l2tj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxCMmZsgq53LjZpNlIXpmrn2w8i1IHzzk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "997066323738-qpqqk7dp203flthlj5m5tvc4m6u8l2tj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:997066323738:android:6a40b64c24326b48189ea3",
+        "android_client_info": {
+          "package_name": "com.example.blog_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "997066323738-qpqqk7dp203flthlj5m5tvc4m6u8l2tj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxCMmZsgq53LjZpNlIXpmrn2w8i1IHzzk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "997066323738-qpqqk7dp203flthlj5m5tvc4m6u8l2tj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'dart:convert';
-import 'package:blog_flutter/Models/Post.dart';
+import 'package:blog_flutter/Post_Module/Models/Post_Model.dart';
 import 'package:blog_flutter/commonStrings/strings.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;

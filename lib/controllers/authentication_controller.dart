@@ -1,9 +1,10 @@
 // ignore_for_file: avoid_print
 
 import 'dart:convert';
+import 'package:blog_flutter/Firebase/Firebase_storage.dart';
 import 'package:blog_flutter/Models/current_user.dart';
+import 'package:blog_flutter/Post_Module/Views/App_Posts.dart';
 import 'package:blog_flutter/commonStrings/strings.dart';
-import 'package:blog_flutter/screens/home.dart';
 import 'package:blog_flutter/screens/login/login.dart';
 import 'package:blog_flutter/shared_pref_helper.dart';
 //import 'package:get/get.dart';
@@ -19,9 +20,14 @@ class AuthenticationController extends GetxController {
   List data = [].obs;
   var idLoad = true.obs;
 
-  uploadImge(File? image, int id) async {
+  uploadImge(File? image,String email, int id) async {
     var formData = FormData.fromMap(
-        {'image': await MultipartFile.fromFile(image!.path), 'user': id});
+        {
+          
+          'image': await FirebaseStorageServices.uploadUserImage(image, email),//'https://firebasestorage.googleapis.com/v0/b/face-book-login-c6070.appspot.com/o/images%2Fahmed%40gmail.com.jpg?alt=media&token=e400d8b4-d27f-46ab-a164-6895f8876176',//await MultipartFile.fromFile(image!.path),
+          'user': id
+          
+          });
     var res =
         await Dio().post("${api_url}/cat/profile/", data: formData);
     print(res.statusCode);
@@ -39,7 +45,7 @@ class AuthenticationController extends GetxController {
       print("********Current User**********");
       currentUser.name=currentUserData[0]['user']['username'];
       currentUser.email=currentUserData[0]['user']['email'];
-      currentUser.image="${api_url}"+currentUserData[0]['image'];
+      currentUser.image=currentUserData[0]['image'];
       
       print(currentUserData);
       
@@ -139,7 +145,7 @@ class AuthenticationController extends GetxController {
       var da = jsonDecode(res.body);
 
       if (res.statusCode == 200) {
-        uploadImge(image, da['user']['id']);
+        uploadImge(image, email,da['user']['id']);
         Get.snackbar("Created", "Account created successfully");
         // final pref = await SharedPreferences.getInstance();
         // pref.setString("token", da["token"]);
@@ -179,7 +185,7 @@ class AuthenticationController extends GetxController {
         final pref = await SharedPreferences.getInstance();
         pref.setString("token", da["token"]);
         pref.setInt("userId", da["user"]["id"]);
-        Get.off(Home());
+        Get.off(ProductListView());
         //print(currentUser.usertoken);
       } else {
         Get.snackbar("Error", "Some thing Wrong!!");
