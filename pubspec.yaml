@@ -38,6 +38,7 @@ dependencies:
   sizer: ^2.0.15
   firebase_core: ^1.13.1
   firebase_storage: ^10.2.9
+  slide_drawer: ^1.0.3
 
 dev_dependencies:
   flutter_test:

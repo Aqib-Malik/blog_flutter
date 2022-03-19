@@ -1,4 +1,6 @@
 
+import 'dart:io';
+
 import 'package:blog_flutter/Post_Module/Models/Post_Model.dart' hide Category;
 import 'package:blog_flutter/Post_Module/Models/cat_model.dart';
 import 'package:blog_flutter/controllers/authentication_controller.dart';
@@ -11,6 +13,7 @@ class PostController extends GetxController{
   var isLoading=true.obs;
   var catList=<Category>[].obs;
   var postList=<Post>[].obs;
+  var img=<File>[].obs;
   
 AuthenticationController controller=Get.put(AuthenticationController());
  var usId;

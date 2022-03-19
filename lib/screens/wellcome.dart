@@ -1,3 +1,4 @@
+import 'package:blog_flutter/ani_drawer/draw.dart';
 import 'package:blog_flutter/screens/signup/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -23,7 +24,7 @@ class _WellComeState extends State<WellCome> {
     super.initState();
     checkLogin().whenComplete((){
       print(a);
-     a==null?Get.off(Signup()):Get.off(ProductListView());
+     a==null?Get.off(Signup()):Get.off(AniDrawerr());//Get.off(ProductListView());
     });
   }
   @override

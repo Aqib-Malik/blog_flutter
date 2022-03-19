@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:blog_flutter/Firebase/Firebase_storage.dart';
 import 'package:blog_flutter/Models/current_user.dart';
 import 'package:blog_flutter/Post_Module/Views/App_Posts.dart';
+import 'package:blog_flutter/ani_drawer/draw.dart';
 import 'package:blog_flutter/commonStrings/strings.dart';
 import 'package:blog_flutter/screens/login/login.dart';
 import 'package:blog_flutter/shared_pref_helper.dart';
@@ -185,7 +186,7 @@ class AuthenticationController extends GetxController {
         final pref = await SharedPreferences.getInstance();
         pref.setString("token", da["token"]);
         pref.setInt("userId", da["user"]["id"]);
-        Get.off(ProductListView());
+        Get.off(AniDrawerr());
         //print(currentUser.usertoken);
       } else {
         Get.snackbar("Error", "Some thing Wrong!!");

@@ -4,6 +4,7 @@ import 'package:blog_flutter/Post_Module/Views/post_screen.dart';
 import 'package:blog_flutter/controllers/authentication_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:slide_drawer/slide_drawer.dart';
 
 import '../../common_widgets/CommonWidgets.dart';
 import '../Controllers/post_controller.dart';
@@ -18,28 +19,37 @@ class ProductListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          actions: [
-            InkWell(
-                onTap: () {
-                  CommonWidgets.confirmBox(
-                      "Log out", "Are you sure you want to logout?", () {
-                    _authenticationController.logout();
-                  });
-                },
-                child: Icon(Icons.logout_sharp))
-          ],
-          title: InkWell(
-              onTap: () {
-                //var image="http://10.0.2.2:8000"+currentUser.image.toString();
-                //print("http://10.0.2.2:8000");
+  title: Text("Posts"),
+  leading: IconButton(
+    icon: Icon(Icons.menu),
+    // call toggle from SlideDrawer to alternate between open and close
+    // when pressed menu button
+    onPressed: () => SlideDrawer.of(context)!.toggle(),
+  ),
+),
+      //AppBar(
+      //     actions: [
+      //       InkWell(
+      //           onTap: () {
+      //             CommonWidgets.confirmBox(
+      //                 "Log out", "Are you sure you want to logout?", () {
+      //               _authenticationController.logout();
+      //             });
+      //           },
+      //           child: Icon(Icons.logout_sharp))
+      //     ],
+      //     title: InkWell(
+      //         onTap: () {
+      //           //var image="http://10.0.2.2:8000"+currentUser.image.toString();
+      //           //print("http://10.0.2.2:8000");
                 
-                  print(currentUser.image);
-                  print(currentUser.name);
-              },
-              child: Text("Programming Blogs")),
-          centerTitle: true,
-        ),
-        drawer: Drawerr(),
+      //             print(currentUser.image);
+      //             print(currentUser.name);
+      //         },
+      //         child: Text("Programming Blogs")),
+      //     centerTitle: true,
+      //   ),
+        //drawer: Drawerr(),
       body: Obx(()=>
         controller.isLoading.value?
             Center(child:CircularProgressIndicator(),)
